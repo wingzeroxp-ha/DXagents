@@ -1,0 +1,257 @@
+{
+  "providers": [
+    {
+      "id": "bailian",
+      "name": "阿里云百炼 按量付费",
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "model": "qwen3.7-plus",
+      "keyLabel": "百炼 API Key (sk-xxx)",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "qwen3.7-max", "name": "Qwen3.7-Max", "pricing": "输入 ¥2.5 / 输出 ¥7.5", "rating": 5 },
+        { "id": "qwen3.7-plus", "name": "Qwen3.7-Plus", "pricing": "输入 ¥1 / 输出 ¥2", "rating": 4 },
+        { "id": "qwen3-vl-plus", "name": "Qwen3-VL-Plus", "pricing": "输入 ¥3 / 输出 ¥9", "rating": 4 }
+      ]
+    },
+    {
+      "id": "bailian-coding",
+      "name": "阿里云百炼 Coding Plan",
+      "baseUrl": "https://coding.dashscope.aliyuncs.com/v1",
+      "model": "qwen3.7-plus",
+      "keyLabel": "Coding Plan API Key (sk-sp-xxx)",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "qwen3.7-max", "name": "Qwen3.7-Max", "pricing": "按套餐抵扣", "rating": 5 },
+        { "id": "qwen3.7-plus", "name": "Qwen3.7-Plus", "pricing": "按套餐抵扣", "rating": 4 },
+        { "id": "qwen3-vl-plus", "name": "Qwen3-VL-Plus", "pricing": "按套餐抵扣", "rating": 4 }
+      ]
+    },
+    {
+      "id": "volcengine-ark",
+      "name": "火山引擎方舟 按量付费",
+      "baseUrl": "https://ark.cn-beijing.volces.com/api/v3",
+      "model": "doubao-seed-2-1-pro-260628",
+      "keyLabel": "方舟 API Key (sk-xxx)",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "doubao-seed-2-1-pro-260628", "name": "Doubao-Seed-2.1-Pro", "pricing": "输入 ¥6 / 输出 ¥30", "rating": 5 }
+      ]
+    },
+    {
+      "id": "volcengine-ark-coding",
+      "name": "火山引擎方舟 Coding Plan",
+      "baseUrl": "https://ark.cn-beijing.volces.com/api/coding/v3",
+      "model": "doubao-seed-2-1-pro-260628",
+      "keyLabel": "Coding Plan API Key (sk-sp-xxx)",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "doubao-seed-2-1-pro-260628", "name": "Doubao-Seed-2.1-Pro", "pricing": "按套餐抵扣", "rating": 5 }
+      ]
+    },
+    {
+      "id": "zhipu",
+      "name": "智谱 AI GLM 按量付费",
+      "baseUrl": "https://open.bigmodel.cn/api/paas/v4",
+      "model": "glm-5",
+      "keyLabel": "智谱 API Key",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "glm-5", "name": "GLM-5", "pricing": "输入 ¥2.1 / 输出 ¥10.7", "rating": 4 },
+        { "id": "glm-4.7", "name": "GLM-4.7", "pricing": "输入 ¥3.9 / 输出 ¥19.3", "rating": 4 }
+      ]
+    },
+    {
+      "id": "zhipu-coding",
+      "name": "智谱 AI GLM Coding Plan",
+      "baseUrl": "https://open.bigmodel.cn/api/coding/paas/v4",
+      "model": "glm-5",
+      "keyLabel": "智谱 API Key（同 Key，不同 baseUrl）",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "glm-5", "name": "GLM-5", "pricing": "Lite ¥49 / Pro ¥99 / Max ¥199 / 月", "rating": 4 },
+        { "id": "glm-4.7", "name": "GLM-4.7", "pricing": "按套餐抵扣", "rating": 4 }
+      ]
+    },
+    {
+      "id": "kimi",
+      "name": "Kimi 按量付费",
+      "baseUrl": "https://api.moonshot.cn/v1",
+      "model": "kimi-k2.6",
+      "keyLabel": "Kimi API Key",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "kimi-k2.6", "name": "Kimi K2.6", "pricing": "输入 ¥6.5 / 输出 ¥27", "rating": 4 }
+      ]
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax 按量付费 / Token Plan",
+      "baseUrl": "https://api.minimaxi.com/v1",
+      "model": "MiniMax-M3",
+      "keyLabel": "MiniMax API Key（plan/标准 URL 相同）",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "MiniMax-M3", "name": "MiniMax-M3", "pricing": "输入 ¥2.1 / 输出 ¥8.6", "rating": 4 }
+      ]
+    },
+    {
+      "id": "baidu-qianfan",
+      "name": "百度千帆 按量付费",
+      "baseUrl": "https://qianfan.baidubce.com/v2",
+      "model": "ernie-x1-turbo-32k",
+      "keyLabel": "千帆 API Key",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "ernie-x1-turbo-32k", "name": "ERNIE X1 Turbo 32K", "pricing": "按量计费", "rating": 4 }
+      ]
+    },
+    {
+      "id": "baidu-qianfan-coding",
+      "name": "百度千帆 Coding Plan / Token Plan",
+      "baseUrl": "https://qianfan.baidubce.com/v2/coding",
+      "model": "ernie-x1-turbo-32k",
+      "keyLabel": "千帆 Coding/Token Plan API Key",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "ernie-x1-turbo-32k", "name": "ERNIE X1 Turbo 32K", "pricing": "按套餐抵扣", "rating": 4 }
+      ]
+    },
+    {
+      "id": "tencent-cloud",
+      "name": "腾讯混元 按量付费",
+      "baseUrl": "https://api.hunyuan.cloud.tencent.com/v1",
+      "model": "hunyuan-turbos-latest",
+      "keyLabel": "腾讯云 API Key",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "hunyuan-turbos-latest", "name": "混元 TurboS", "pricing": "按量计费", "rating": 4 },
+        { "id": "hunyuan-t1", "name": "混元 T1", "pricing": "按量计费", "rating": 4 }
+      ]
+    },
+    {
+      "id": "tencent-coding",
+      "name": "腾讯云 Coding Plan",
+      "baseUrl": "https://api.lkeap.cloud.tencent.com/coding/v3",
+      "model": "hunyuan-turbos-latest",
+      "keyLabel": "Coding Plan API Key (sk-sp-xxx)",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "hunyuan-turbos-latest", "name": "混元 TurboS", "pricing": "按套餐抵扣", "rating": 4 },
+        { "id": "hunyuan-t1", "name": "混元 T1", "pricing": "按套餐抵扣", "rating": 4 }
+      ]
+    },
+    {
+      "id": "xiaomi-mimo",
+      "name": "小米 MiMO Token Plan",
+      "baseUrl": "https://token-plan-cn.xiaomimimo.com/v1",
+      "model": "mimo-v2.5-pro",
+      "keyLabel": "MiMO Token (tp-xxx)",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "mimo-v2.5-pro", "name": "MiMo 2.5 Pro", "pricing": "按套餐抵扣", "rating": 4 }
+      ]
+    },
+    {
+      "id": "xiaomi-mimo-api",
+      "name": "小米 MiMO 按量付费",
+      "baseUrl": "https://api.xiaomimimo.com/v1",
+      "model": "mimo-v2.5-pro",
+      "keyLabel": "MiMO API Key (sk-xxx)",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "mimo-v2.5-pro", "name": "MiMo 2.5 Pro", "pricing": "输入 ¥8 / 输出 ¥8", "rating": 4 }
+      ]
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic Claude 标准接口",
+      "baseUrl": "https://api.anthropic.com",
+      "model": "claude-sonnet-4-20250514",
+      "keyLabel": "Anthropic API Key",
+      "protocol": "anthropic",
+      "models": [
+        { "id": "claude-sonnet-4-20250514", "name": "Claude Sonnet 4", "pricing": "$3 / $15", "rating": 5 },
+        { "id": "claude-sonnet-5", "name": "Claude Sonnet 5", "pricing": "$3 / $15", "rating": 5 },
+        { "id": "claude-opus-4-8", "name": "Claude Opus 4.8", "pricing": "$5 / $25", "rating": 4 }
+      ]
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek 按量付费",
+      "baseUrl": "https://api.deepseek.com",
+      "model": "deepseek-v4-pro",
+      "keyLabel": "DeepSeek API Key (sk-xxx)",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "deepseek-v4-flash", "name": "DeepSeek V4-Flash", "pricing": "输入 ¥1 / 输出 ¥2", "rating": 5 },
+        { "id": "deepseek-v4-pro", "name": "DeepSeek V4-Pro", "pricing": "输入 ¥3.1 / 输出 ¥6.2", "rating": 5 }
+      ]
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI 标准接口",
+      "baseUrl": "https://api.openai.com/v1",
+      "model": "gpt-5.5",
+      "keyLabel": "OpenAI API Key (sk-xxx)",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "gpt-5.5", "name": "GPT-5.5", "pricing": "$5 / $30 (输入/输出)", "rating": 5 },
+        { "id": "gpt-5.4", "name": "GPT-5.4", "pricing": "$2.5 / $15 (输入/输出)", "rating": 4 }
+      ]
+    },
+    {
+      "id": "google",
+      "name": "Google Gemini API",
+      "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+      "model": "gemini-2.5-flash",
+      "keyLabel": "Google AI Studio API Key",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "gemini-2.5-flash", "name": "Gemini 2.5 Flash", "pricing": "$0.15 / $0.60", "rating": 5 },
+        { "id": "gemini-2.5-pro", "name": "Gemini 2.5 Pro", "pricing": "$1.25 / $5", "rating": 4 }
+      ]
+    },
+    {
+      "id": "baichuan",
+      "name": "百川智能 按量付费",
+      "baseUrl": "https://api.baichuan-ai.com/v1",
+      "model": "Baichuan4-Turbo",
+      "keyLabel": "百川 API Key",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "Baichuan4-Turbo", "name": "Baichuan4-Turbo", "pricing": "输入 ¥12 / 输出 ¥12", "rating": 4 }
+      ]
+    },
+    {
+      "id": "xfyun",
+      "name": "讯飞星火 按量付费",
+      "baseUrl": "https://spark-api-open.xf-yun.com/v1",
+      "model": "spark-x2",
+      "keyLabel": "讯飞 API Key",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "spark-x2", "name": "星火 X2", "pricing": "输入 ¥3 / 输出 ¥3", "rating": 4 }
+      ]
+    },
+    {
+      "id": "meta",
+      "name": "Meta Llama (第三方 API)",
+      "baseUrl": "https://api.groq.com/openai/v1",
+      "model": "llama4-scout",
+      "keyLabel": "Groq / 第三方 API Key",
+      "protocol": "openai-compatible",
+      "models": [
+        { "id": "llama4-scout", "name": "Llama 4 Scout", "pricing": "取决于供应商", "rating": 4 }
+      ]
+    },
+    {
+      "id": "custom-openai-compatible",
+      "name": "自定义 OpenAI-Compatible 接口",
+      "baseUrl": "",
+      "model": "",
+      "keyLabel": "API Key / Token",
+      "protocol": "openai-compatible",
+      "models": []
+    }
+  ]
+}

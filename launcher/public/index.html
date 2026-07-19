@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>有极智能Agent</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23151b23'/%3E%3Cpath d='M18 20h28v24H18z' fill='%232aa889'/%3E%3Cpath d='M24 14h16v8H24z' fill='%23e7edf3'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+
+    <!-- ════════════════════════════════════════════════════════════
+         View: Home — Launcher Shell (Mode Selection)
+         ════════════════════════════════════════════════════════════ -->
+    <div id="view-home" class="view active">
+      <div class="launcher-shell">
+        <div class="launcher-brand">
+          <svg class="launcher-logo" viewBox="0 0 64 64" width="64" height="64">
+            <rect width="64" height="64" rx="12" fill="#151b23"/>
+            <path d="M18 20h28v24H18z" fill="#2aa889"/>
+            <path d="M24 14h16v8H24z" fill="#e7edf3"/>
+          </svg>
+          <h1>有极智能Agent</h1>
+          <p class="launcher-sub">便携式 AI 工作台</p>
+          <p class="launcher-env" id="launcherEnv">正在读取环境...</p>
+        </div>
+        <div class="mode-cards">
+          <a href="#simple" class="mode-card launcher-card">
+            <div class="mode-card-icon">🔧</div>
+            <div class="mode-card-body">
+              <div class="mode-card-title">简易模式</div>
+              <div class="mode-card-desc">快速管理 Agent 启停、简易对话、模型 API 配置、权限与维护</div>
+            </div>
+            <div class="mode-card-badge">快速体验</div>
+          </a>
+          <a href="#work" class="mode-card launcher-card">
+            <div class="mode-card-icon">🚀</div>
+            <div class="mode-card-body">
+              <div class="mode-card-title">工作模式</div>
+              <div class="mode-card-desc">进阶对话体验、预置智能体、模型市场、完整工作区</div>
+            </div>
+            <div class="mode-card-badge">进阶使用</div>
+          </a>
+          <a href="#pro" class="mode-card launcher-card">
+            <div class="mode-card-icon">⚡</div>
+            <div class="mode-card-body">
+              <div class="mode-card-title">进阶模式</div>
+              <div class="mode-card-desc">完整 Agent 管理：文件系统、实时日志、API 探索、原始模式调试</div>
+            </div>
+            <div class="mode-card-badge new">Pro</div>
+          </a>
+        </div>
+        <div class="launcher-footer">
+          <span id="launcherPort">端口读取中...</span>
+          <span id="launcherVersion">v2.0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════
+         View: Work — Work Mode (Sidebar + Main Content)
+         ════════════════════════════════════════════════════════════ -->
+    <div id="view-work" class="view">
+      <!-- Work Mode Topbar -->
+      <header class="topbar" id="workTopbar">
+        <div class="topbar-left">
+          <button id="menuToggle" class="icon-btn" title="切换侧栏">☰</button>
+          <h1>有极智能Agent</h1>
+        </div>
+        <div class="topbar-center" id="workStatus">
+          <span class="status-dot" id="workAgentDot"></span>
+          <span id="workAgentName">OpenClaw</span>
+          <span class="status-label" id="workAgentStatus">检查中...</span>
+          <div class="agent-btn-group" id="workAgentActions">
+            <button class="agent-action-btn" data-action="start">▶ 启动</button>
+            <button class="agent-action-btn" data-action="stop" disabled>⏹ 停止</button>
+            <button class="agent-action-btn" data-action="restart" disabled>⟳ 重启</button>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <select id="workAgentSelect" aria-label="切换 Agent">
+            <option value="openclaw">OpenClaw</option>
+            <option value="hermes">Hermes</option>
+          </select>
+          <a href="#simple" class="back-link">简易模式</a>
+        </div>
+      </header>
+
+      <!-- Simple Mode Topbar -->
+      <header class="topbar" id="simpleTopbar" style="display:none">
+        <div class="topbar-left">
+          <h1>有极智能Agent</h1>
+          <span class="mode-badge">简易</span>
+        </div>
+        <div class="topbar-right">
+          <a href="#home" class="back-link">返回</a>
+          <a href="#work" class="back-link">工作模式</a>
+        </div>
+      </header>
+
+      <div class="work-layout">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar expanded">
+          <div class="sidebar-header">
+            <span class="sidebar-title">菜单</span>
+          </div>
+          <ul class="sidebar-menu">
+            <li data-panel="chat" class="active" title="对话列表">
+              <span class="menu-icon">💬</span>
+              <span class="menu-label">对话</span>
+            </li>
+            <li data-panel="presets" title="预置智能体">
+              <span class="menu-icon">🤖</span>
+              <span class="menu-label">智能体</span>
+            </li>
+            <li data-panel="history" title="历史会话">
+              <span class="menu-icon">📋</span>
+              <span class="menu-label">历史</span>
+            </li>
+            <li data-panel="models" title="API 配置与模型市场">
+              <span class="menu-icon">⚙️</span>
+              <span class="menu-label">API 配置</span>
+            </li>
+            <li data-panel="permissions" title="权限范围">
+              <span class="menu-icon">🔒</span>
+              <span class="menu-label">权限</span>
+            </li>
+            <li data-panel="diagnostics" title="诊断中心">
+              <span class="menu-icon">🔍</span>
+              <span class="menu-label">诊断</span>
+            </li>
+            <li data-panel="maintenance" title="维护">
+              <span class="menu-icon">🛠</span>
+              <span class="menu-label">维护</span>
+            </li>
+            <li data-panel="skills" title="技能市场">
+              <span class="menu-icon">🧩</span>
+              <span class="menu-label">技能市场</span>
+            </li>
+            <li data-panel="files" class="pro-only" title="文件管理器" style="display:none">
+              <span class="menu-icon">📁</span>
+              <span class="menu-label">文件</span>
+            </li>
+            <li data-panel="logs" class="pro-only" title="实时日志" style="display:none">
+              <span class="menu-icon">📜</span>
+              <span class="menu-label">日志</span>
+            </li>
+            <li data-panel="explorer" class="pro-only" title="API 探索" style="display:none">
+              <span class="menu-icon">🔌</span>
+              <span class="menu-label">API 探索</span>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main id="workContent" class="work-content">
+          <div id="panel-chat" class="panel-wrap active">
+            <div class="chat-panel">
+              <div class="chat-panel-head">
+                <div>
+                  <h2>对话</h2>
+                  <span class="chat-context-name" id="chatContextName">OpenClaw</span>
+                </div>
+                <div class="chat-panel-actions">
+                  <select id="chatModelSelect" class="chat-model-select" title="选择模型" style="display:none"></select>
+                  <button id="chatRawToggle" class="icon-btn raw-toggle" title="原始模式（显示完整请求/响应）" style="display:none">📄</button>
+                  <button id="chatNewBtn" class="icon-btn" title="新建对话">✚</button>
+                  <button id="chatClearBtn" class="icon-btn" title="清空对话">✕</button>
+                </div>
+              </div>
+              <div id="chatPresetBar" class="chat-preset-bar" style="display:none"></div>
+              <div class="chat-panel-body">
+                <div class="chat-messages-modern" id="chatMessages">
+                  <div class="chat-empty">没有消息。输入内容开始对话。</div>
+                </div>
+                <div class="chat-input-area">
+                  <div class="chat-attachment-bar" id="chatAttachments"></div>
+                  <form id="chatForm" class="chat-form-modern">
+                    <textarea id="chatInput" rows="1" placeholder="输入消息，Enter 发送，Shift+Enter 换行" class="chat-input-auto"></textarea>
+                    <label class="chat-file-label" title="添加图片或文件">
+                      📎
+                      <input id="chatFileInput" type="file" multiple accept="image/*,.txt,.md,.json,.csv,.log,.xml,.html,.js,.ts,.py,.java,.go,.rs,.c,.cpp,.h,.css" />
+                    </label>
+                    <button type="submit" class="chat-send-btn" title="发送">➤</button>
+                  </form>
+        </div>
+      </div>
+
+      <!-- Simple Mode Collapsible Panels (below chat) -->
+      <div id="simpleConfigPanel" class="simple-collapse-wrap" style="display:none">
+        <details class="simple-collapse">
+          <summary>⚙️ 模型配置</summary>
+          <div id="simpleConfigBody" class="simple-collapse-body"></div>
+        </details>
+        <details class="simple-collapse">
+          <summary>🛠️ 诊断与维护</summary>
+          <div id="simpleToolsBody" class="simple-collapse-body"></div>
+        </details>
+      </div>
+    </div>
+          </div>
+          <div id="panel-presets" class="panel-wrap">
+            <div class="panel-placeholder">预置智能体面板加载中...</div>
+          </div>
+          <div id="panel-history" class="panel-wrap">
+            <div class="panel-placeholder">历史会话加载中...</div>
+          </div>
+          <div id="panel-models" class="panel-wrap">
+            <div class="panel-placeholder">API 配置面板加载中...</div>
+          </div>
+          <div id="panel-permissions" class="panel-wrap">
+            <div class="panel-placeholder">权限面板加载中...</div>
+          </div>
+          <div id="panel-diagnostics" class="panel-wrap">
+            <div class="panel-placeholder">诊断面板加载中...</div>
+          </div>
+          <div id="panel-maintenance" class="panel-wrap">
+            <div class="panel-placeholder">维护面板加载中...</div>
+          </div>
+          <div id="panel-skills" class="panel-wrap">
+            <div class="panel-placeholder">技能市场加载中...</div>
+          </div>
+          <div id="panel-files" class="panel-wrap">
+            <div class="panel-placeholder">📁 文件管理器加载中...</div>
+          </div>
+          <div id="panel-logs" class="panel-wrap">
+            <div class="panel-placeholder">📜 日志加载中...</div>
+          </div>
+          <div id="panel-explorer" class="panel-wrap">
+            <div class="panel-placeholder">🔌 API 探索加载中...</div>
+          </div>
+        </main>
+      </div>
+
+      <!-- Simple Mode Chat Area -->
+      <div id="simpleChatArea" style="display:none">
+        <div class="simple-chat-grid">
+          <div class="simple-chat-col" data-agent="openclaw">
+            <div class="simple-chat-header">
+              <div class="simple-chat-title">
+                <strong>🤖 OpenClaw</strong>
+                <span id="simpleStatusOpenclaw" class="simple-chat-status">检查中...</span>
+              </div>
+              <div class="simple-chat-actions">
+                <select id="simpleModelOpenclaw" class="chat-model-select simple-model-select" title="选择模型" style="display:none"></select>
+                <button class="agent-action-btn" data-action="start" data-agent="openclaw">▶ 启动</button>
+                <button class="agent-action-btn" data-action="stop" data-agent="openclaw" disabled>⏹ 停止</button>
+                <button class="icon-btn simple-clear-btn" data-clear="openclaw" title="清空对话">✕</button>
+              </div>
+            </div>
+            <div class="simple-chat-messages" id="simpleChatOpenclaw">
+              <div class="chat-empty">没有消息。启动 Agent 后开始对话。</div>
+            </div>
+            <div class="chat-input-area" style="border-top:none">
+              <form class="chat-form-modern" data-simple-form="openclaw">
+                <textarea rows="1" placeholder="输入消息，Enter 发送，Shift+Enter 换行" class="chat-input-auto"></textarea>
+                <button type="submit" class="chat-send-btn">➤</button>
+              </form>
+            </div>
+            <div class="simple-quick-actions">
+              <button class="simple-quick-btn" data-nav="config" data-agent="openclaw">⚙️ API 配置</button>
+              <button class="simple-quick-btn" data-nav="maintenance" data-agent="openclaw">🛠 维护</button>
+            </div>
+          </div>
+
+          <div class="simple-chat-col" data-agent="hermes">
+            <div class="simple-chat-header">
+              <div class="simple-chat-title">
+                <strong>🤖 Hermes</strong>
+                <span id="simpleStatusHermes" class="simple-chat-status">检查中...</span>
+              </div>
+              <div class="simple-chat-actions">
+                <select id="simpleModelHermes" class="chat-model-select simple-model-select" title="选择模型" style="display:none"></select>
+                <button class="agent-action-btn" data-action="start" data-agent="hermes">▶ 启动</button>
+                <button class="agent-action-btn" data-action="stop" data-agent="hermes" disabled>⏹ 停止</button>
+                <button class="icon-btn simple-clear-btn" data-clear="hermes" title="清空对话">✕</button>
+              </div>
+            </div>
+            <div class="simple-chat-messages" id="simpleChatHermes">
+              <div class="chat-empty">没有消息。启动 Agent 后开始对话。</div>
+            </div>
+            <div class="chat-input-area" style="border-top:none">
+              <form class="chat-form-modern" data-simple-form="hermes">
+                <textarea rows="1" placeholder="输入消息，Enter 发送，Shift+Enter 换行" class="chat-input-auto"></textarea>
+                <button type="submit" class="chat-send-btn">➤</button>
+              </form>
+            </div>
+            <div class="simple-quick-actions">
+              <button class="simple-quick-btn" data-nav="config" data-agent="hermes">⚙️ API 配置</button>
+              <button class="simple-quick-btn" data-nav="maintenance" data-agent="hermes">🛠 维护</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════
+         Shared: Log Dialog
+         ════════════════════════════════════════════════════════════ -->
+    <dialog id="logDialog">
+      <div class="dialog-head">
+        <h2 id="logTitle">日志</h2>
+        <button id="closeLog" class="icon-btn">✕</button>
+      </div>
+      <pre id="logBody" class="log-body"></pre>
+    </dialog>
+
+    <div id="toastContainer"></div>
+
+    <script src="./modules/toast.js"></script>
+    <script src="./modules/syntax.js"></script>
+    <script src="./modules/shortcuts.js"></script>
+    <script src="./modules/sidebar.js"></script>
+    <script src="./workspace.js"></script>
+  </body>
+</html>

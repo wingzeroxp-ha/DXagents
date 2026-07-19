@@ -1,0 +1,12 @@
+{
+  "name": "ai-agent-portable-launcher",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Portable launcher for OpenClaw and Hermes agents.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js --open"
+  }
+}
+

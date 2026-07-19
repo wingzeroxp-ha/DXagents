@@ -1,0 +1,48 @@
+{
+  "agents": {
+    "openclaw": {
+      "id": "openclaw",
+      "name": "OpenClaw",
+      "preferredPort": 18789,
+      "portRange": [18789, 18820],
+      "homeDir": "data/openclaw/home",
+      "workspaceDir": "data/openclaw/workspace",
+      "memoryDir": "data/openclaw/memory",
+      "logDir": "data/openclaw/logs",
+      "npmCacheDir": "data/openclaw/npm-cache",
+      "urlTemplate": "http://127.0.0.1:{port}/",
+      "dashboardUrlTemplate": "http://127.0.0.1:{port}/",
+      "adapters": {
+        "win32": {
+          "startScript": "agents/openclaw/win-x64/start.cmd"
+        },
+        "darwin": {
+          "startScript": "agents/openclaw/mac-arm64/start.sh"
+        }
+      }
+    },
+    "hermes": {
+      "id": "hermes",
+      "name": "Hermes",
+      "preferredPort": 3000,
+      "portRange": [3000, 3030],
+      "dashboardPreferredPort": 9119,
+      "dashboardPortRange": [9119, 9149],
+      "homeDir": "data/hermes/home",
+      "workspaceDir": "data/hermes/workspace",
+      "memoryDir": "data/hermes/memory",
+      "logDir": "data/hermes/logs",
+      "npmCacheDir": "data/hermes/npm-cache",
+      "urlTemplate": "http://127.0.0.1:{dashboardPort}/",
+      "dashboardUrlTemplate": "http://127.0.0.1:{dashboardPort}/",
+      "adapters": {
+        "win32": {
+          "startScript": "agents/hermes/win-x64/start.cmd"
+        },
+        "darwin": {
+          "startScript": "agents/hermes/mac-arm64/start.sh"
+        }
+      }
+    }
+  }
+}

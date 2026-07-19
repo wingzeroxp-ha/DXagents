@@ -1,0 +1,9 @@
+{
+  "type": "commonjs",
+  "version": "0.1.0",
+  "dependencies": {
+    "openclaw": "2026.5.7"
+  },
+  "name": "openclaw-portable-win-x64",
+  "private": true
+}

@@ -1,0 +1,31 @@
+# Node.js runtime binaries (platform-specific, ~2.5GB)
+runtime/
+
+# Agent runtimes - npm dependencies and compiled binaries
+agents/*/win-x64/node_modules/
+agents/*/mac-arm64/
+agents/hermes/*/hermes-agent/
+
+# User data (logs, backups, memory, workspace)
+data/
+
+# User data (logs, backups, memory, workspace)
+data/
+
+# API Keys and sensitive config
+config/channels.json
+config/model*.json
+config/permissions.json
+config/runtime-ports.json
+config/custom-presets.json
+launcher/config/runtime-ports.json
+
+# Root-level old backups
+backup-*/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

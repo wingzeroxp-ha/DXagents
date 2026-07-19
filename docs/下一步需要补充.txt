@@ -1,0 +1,82 @@
+当前包已经完成（v2.0 双系统 UI/UX 升级）：
+
+1.  Launcher Shell 模式选择页（/?）— 选择简易模式、工作模式或专业模式
+2.  简易模式（simple.html）— 原版直连模型 API 对话，独立页面
+3.  工作模式 SPA（#work）— 侧边栏导航 + 路由切换
+4.  对话面板 — Markdown 气泡、图片/文件附件、复制、清空、三点等待动画
+5.  预置智能体（config/presets.json）— 10 个预设角色，点击 "使用" 注入
+    systemPrompt，对话顶部显示预设名称 + 清除按钮
+6.  模型市场（config/models.json）— 国产 20 模型 + 国外 8 模型，
+    已配置/未配置标签、删除 Key 按钮
+7.  权限/诊断/维护面板 — 从原有 UI 搬入工作模式
+8.  Agent 对话一致性 — Agent 运行时走 Agent 自身 API（gateway/dashboard），
+    未运行时回退到直连模型 API
+9.  预置智能体 systemPrompt 注入 — 选中预设后自动带入聊天请求
+10. 自动启动修复 — 无 Model 配置时跳过启动，不崩溃
+11. 清除 API Key 端点（/api/config/clear-key）
+12. 一键复位工具 — Windows（.bat）+ Mac（.command），保留 Agent 核心和
+    预设/模型市场，清空模型配置和运行时记录
+13. 端口自动避让（3800-3900）
+14. SSE 流式输出 — 对话助手逐字输出（打字机效果），同时保留 JSON 回退
+15. 历史会话管理 — 清空对话时自动存档，可在「历史」面板浏览/加载/删除
+16. OpenClaw Windows x64 已安装并可由启动器启动
+17. Hermes Windows x64 核心、dashboard 后端与 Web UI 已安装并可由启动器启动
+18. Hermes Windows x64 浏览器自动化引擎 Camoufox 已内置并通过无界面启动测试
+19. Mac M 入口脚本已补 Apple Silicon 检查与 Node 权限修正
+20. OpenClaw mac-arm64 启动脚本已补齐，首次 Mac 启动会在 U 盘内安装依赖
+21. Hermes mac-arm64 源码、启动脚本、Python/uv/Camoufox 离线包已补齐
+22. 技能市场搜索 — 按名称/描述/ID/作者实时过滤，支持市场标签和本地安装页
+23. 技能市场缓存 — 断网时自动服用 market-cache.json，首次无缓存则报错
+24. 技能市场 URL 切换 — 改用 mirror.ghproxy.com GitHub 镜像代理（解决国内访问）
+25. Google Translate 移除 — 该 API 国内不可用，不再翻译技能描述
+26. 简易模式快捷按钮 — 每列底部放 ⚙️ API 配置 / 🛠 维护，点后自动跳工作模式对应面板
+27. 按钮常启用 — 所有 start/stop/restart/open 不因 running 状态禁用
+28. "未运行" 状态标签移除 — 状态栏留空，不再显示"⏸ 未运行"
+29. Open 按钮改直连 — 去掉 LAUNCHER_PORT 代理逻辑，直接打开 dashboardUrl
+30. LAUNCHER_PORT 配置项删除 — 前端 script 标签移除
+31. 首页默认 Home — 加载 DOM 时不还原 localStorage.lastMode，无 hash 时始终进首页
+32. 首页标签更新 — "现有界面" → "快速体验"，"新版" → "进阶使用"
+33. Hermes Dashboard 端口回退 — dashboardPort 不通时自动 fallback 到主端口反查页面
+34. 反向代理回退 — 之前尝试的 HTTP proxy 方案因 OpenClaw Cookie/路径问题回退到原始 302 跳转
+35. agents.js 导出去重 — loadPid/savePid/clearPid 重复导出清理
+36. 专业模式（#pro）— 新增 Pro 模式卡片（工作模式布局 + 3 个 Pro 面板）
+37. 文件浏览器面板 — 浏览 Agent 工作目录文件（仅 Pro）
+38. 实时日志面板 — SSE 推送 Agent 运行日志，自动滚动（仅 Pro）
+39. API 探索面板 — 调用启动器各 API 端点并查看返回结果（仅 Pro）
+40. Raw 模式 — 对话中点击 📄 按钮显示完整 JSON 请求/响应
+41. 模型配置重构 — 以服务商为单位配置（一个 API Key 对应一个服务商下的所有模型），
+    对话下拉菜单可选该服务商下任意模型，显示能力标签如 `(text+vision)`
+42. 自定义智能体 — 用户可创建自定义 preset（名称/图标/描述/系统提示词/技能标签/
+    关联模型），支持编辑和删除，激活时自动切换模型
+43. 自定义智能体 API — GET/POST/DELETE /api/custom-presets，存储在
+    config/custom-presets.json
+44. 配置存储更新 — 通道存储改为单条记录含 providerId + apiKey + baseUrl + models[]
+45. 服务商/模型数据修复 — providers.json 新增 deepseek/openai/google/baichuan/xfyun/meta 6 个服务商；models.json 修正 16 个模型的 providerId（alibaba→bailian, moonshot→kimi, doubao→volcengine-ark, mimo-2.5→xiaomi-mimo-api 等）；代码补充 xiaomi-mimo-api 特殊处理分支
+46.  docs/ 文档同步更新 — 使用说明.md、使用说明.txt 已同步
+47.  Anthropic 协议修复 — providers.json 中 anthropic 设为 protocol: anthropic，models.json 新增 claude-sonnet-4-20250514；协议自动识别 anthropic-messages 和 openai-completions
+48.  服务商数据清理 — 移除已停用的天翼云（ctyun）服务商
+49.  通道编辑优化 — 编辑通道改为 PUT 原地更新（原为 DELETE+POST，导致通道 ID 变化、其他 Agent 引用丢失）
+50.  通道创建去重 — createChannel 自动查重（providerId+model 相同的通道直接返回已有 ID）
+51.  写文件原子化 — writeJson 改为 .tmp 写入 + rename 原子提交，防止写入中断导致的 json 损坏
+52.  channels.json 越界修复 — models 字段数组化，protocol 字段回填
+53.  shortcuts.js 兼容层 — workspace.js 暴露 refreshAll/getAgent/backupData/restoreBackup 桥接 app.js 接口
+54.  前端健壮性 — save 按钮增加 disabled 状态防重复提交；init() 改为 await loadLauncherEnv() 再 populate，消除竞态
+55.  backup 性能修复 — 备份跳过 node_modules/hermes-agent/python-mac-arm64/python-win-x64，用时从 ~280 秒降至 ~7 秒，体积从 1.1GB 降至 ~45MB
+56.  server.js 死代码清理 — 移除已移至 agents.js 的重复函数（buildAgentEnv/openClawProviderMeta/prepareAgentConfig）
+57.  全量端点回归验证 — 13/13 全部 200 通过，无超时
+
+后续需要补充：
+
+1.  在 Mac M 真机上完成首次初始化验证
+2.  如果 Mac 首次安装 Hermes 依赖失败，根据日志补国内镜像或 wheel 缓存
+3.  在 Windows 和 Mac M 真机上分别做最终验收
+4.  后期可创建 Windows-启动.bat / Mac-启动.command 方便双击启动
+5.  后期可把 .bat / .command 升级成 .exe / .app
+6.  文档可同步发布到飞书知识库，保持 docs/ 目录为源
+7.  同步 docs/ 和 internal/ 文档到最新（每次 UI/功能变更后同步）
+8.  远程更新系统：
+    - 可更新范围：前端界面（public/ 下所有文件）、功能代码（lib/、server.js）、模型信息（config/providers.json、config/models.json）
+    - 不可更新范围：运行环境（runtime/ 下的 Node/Python 二进制，除非绝对必要）
+    - 方案：搭建更新服务器，启动器启动时或定期检查版本号，下载增量/全量包，验证完整性后自动替换
+    - 更新服务器地址可配置（默认指向自建服务器）
+    - 涉及文件：launcher/update.json（版本/渠道信息）、launcher/lib/updater.js（更新逻辑）
