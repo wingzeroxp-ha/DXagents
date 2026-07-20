@@ -9,9 +9,6 @@ agents/hermes/*/hermes-agent/
 # User data (logs, backups, memory, workspace)
 data/
 
-# User data (logs, backups, memory, workspace)
-data/
-
 # API Keys and sensitive config
 config/channels.json
 config/model*.json
@@ -20,7 +17,7 @@ config/runtime-ports.json
 config/custom-presets.json
 launcher/config/runtime-ports.json
 
-# Root-level old backups
+# Root-level old manual backups (superseded by git history + runtime backups)
 backup-*/
 
 # Logs

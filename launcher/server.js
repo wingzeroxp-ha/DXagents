@@ -1088,12 +1088,13 @@ async function handleRequest(req, res) {
       if (ext === ".html" || ext === ".js" || ext === ".css" || ext === ".json" || ext === ".svg") {
         let content = fs.readFileSync(filePath, "utf8");
         if (ext === ".html") {
-          content = content.replace(/__PORT__/g, String(PORT)).replace(/__AGENT__/g, targetAgent);
+          const cssVersion = Date.now();
+          content = content.replace(/__PORT__/g, String(PORT)).replace(/__AGENT__/g, targetAgent).replace(/__CSS_VERSION__/g, String(cssVersion));
         }
-        res.writeHead(200, { "Content-Type": contentType(filePath), "Cache-Control": "no-cache" });
+        res.writeHead(200, { "Content-Type": contentType(filePath), "Cache-Control": "no-store, must-revalidate" });
         res.end(content);
       } else {
-        res.writeHead(200, { "Content-Type": contentType(filePath), "Cache-Control": "no-cache" });
+        res.writeHead(200, { "Content-Type": contentType(filePath), "Cache-Control": "no-store, must-revalidate" });
         fs.createReadStream(filePath).pipe(res);
       }
       return;

@@ -1251,6 +1251,7 @@
           '<button class="preset-use accent" data-preset-id="' + esc(p.id) + '">' + (active ? '使用中' : '使用') + '</button>' +
           actions +
           '</div>' +
+          '</div>' +
           '</div>';
       }
 
